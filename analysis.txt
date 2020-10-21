@@ -1,0 +1,62 @@
+Anita Yakobchuk
+lab04 analysis
+
+In the linked list implementation the biggest setback was memory leaks. One
+problem was figuring out how to free the data buffer in 
+RemoveFromFrontOfLinkedList() because the data buffer needed to be returned
+in that function so I actually had to free it in my while loop inside the 
+DestryLinkedList() function. The way I did it was by setting a char variable 
+equal to the remove function (since the remove function returned the char
+buffer) so then I could free it and set it equal to NULL. The only other 
+problem was understanding how to access the nodes. After doing lab_e.c it
+became easier to understand the linked lists and pointers but at first it 
+took a few tries for me to understand how everything is done with pointers.
+I needed to visualize how a linked list has a front and back pointer which 
+point to nodes and how nodes have pointers that point to next and previous
+nodes. Traversing through linked lists also became easier to understand after
+lab_e.c and that it can be done with a temp pointer that you free at the end
+or just simply using the lists variable that keeps track of the number of 
+elements. In LinkedLists.c it was easy to think of the implementation with
+2 cases rather than 3. I understood that the list needed to be checked first 
+if it existed, then if there was only one element, and if there were 2 or 
+more elements. 
+
+
+The LinkedLists.h is an interface that LinkedLists.c implements.
+For LinkedLists.c there were 4 functions that were implemented.
+
+InitLinkedLists() took in the pointer of a linked list and initialized
+it's elements. NumElements was set to zero and the front and back pointers
+were initialized to NULL.
+
+ AddToBackOfLinkedList() took in the linked list
+pointer and a data string because this function added a node to the back of
+the list. It did so by checking for each case and executing according to a 
+certain case. If the linked list was NULL then it didn't add because the
+list would be nonexistant. After, a new node was instantiated and memory was
+allocated for it. An error printed if the malloc failed. If the malloc was 
+successful the data string was copied into the node's String variable. The 
+new node's Next and Previous pointers were initialized to NULL. If the list
+had no elements, the list's front and back pointer pointed to the new node.
+If the list had one or more elements, the new node's Previous pointer pointed
+to the list's back node, the list's back pointer's next node pointed to the
+new node, and finally the list's back pointer was set as the new node. The 
+list's NumElements was incremented by one when a new node was added.
+     
+RemoveFromFrontOfLinkedList() removed a node from the front adn returned a 
+pointer to the node data removed. The function first checked to see if the 
+list was empty. If there were no elements in the list, the function returned
+NULL. Otherwise, a buffer was initialized and memory was allocated for it to
+hold a node's String variable. If the malloc was successful, the data string
+from the first node was copied into it. Now the node can be removed. If the 
+list had only one element, the front pointer was freed and the front and back
+pointer were set to NULL. If the list had more than one element, the front
+pointer was set to the next node, the new front pointer's previous node was 
+freed and set to NULL. If a node was removed, the NumElements variable was
+subtracted by one. The string buffer which was removed was returned at
+the end of the function. 
+
+DestroyLinkedList() took in the pointer of the linked list and de-allocated
+the linked list and reset struct fields so that the contents would be empty.
+It did so by calling the RemoveFromFrontOfLinkedList() function while the 
+number elements in the list wasn't zero.

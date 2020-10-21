@@ -1,0 +1,147 @@
+LAB_A.C OUTPUT
+
+Program 0x40068d
+Static data 0x7fffffef
+Ram data 0x7fffffe9
+Heap data 0x17ad010
+Stack data 0x7fffffec
+Passing the 2X function a 2, I got 4
+Passing the 3X function a 2, I got 6
+Heap data values before free: 1 Stack
+Heap data values before free: 2 Pointer
+Heap data values after free: 0 
+
+LAB_A.C VALGRIND OUTPUT
+
+==12380== Memcheck, a memory error detector
+==12380== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12380== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==12380== Command: ./lab_a
+==12380== 
+==12380== Invalid read of size 4
+==12380==    at 0x4008D5: main (lab_a.c:68)
+==12380==  Address 0x5205040 is 0 bytes inside a block of size 44 free'd
+==12380==    at 0x4C2AF5D: free (vg_replace_malloc.c:540)
+==12380==    by 0x4008D1: main (lab_a.c:66)
+==12380==  Block was alloc'd at
+==12380==    at 0x4C29E63: malloc (vg_replace_malloc.c:309)
+==12380==    by 0x40069C: main (lab_a.c:37)
+==12380== 
+==12380== Invalid read of size 1
+==12380==    at 0x4E84069: vfprintf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4E8A498: printf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4008E6: main (lab_a.c:68)
+==12380==  Address 0x5205044 is 4 bytes inside a block of size 44 free'd
+==12380==    at 0x4C2AF5D: free (vg_replace_malloc.c:540)
+==12380==    by 0x4008D1: main (lab_a.c:66)
+==12380==  Block was alloc'd at
+==12380==    at 0x4C29E63: malloc (vg_replace_malloc.c:309)
+==12380==    by 0x40069C: main (lab_a.c:37)
+==12380== 
+==12380== Invalid read of size 1
+==12380==    at 0x4C31BA8: __GI_mempcpy (vg_replace_strmem.c:1538)
+==12380==    by 0x4EB1964: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4E84022: vfprintf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4E8A498: printf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4008E6: main (lab_a.c:68)
+==12380==  Address 0x5205044 is 4 bytes inside a block of size 44 free'd
+==12380==    at 0x4C2AF5D: free (vg_replace_malloc.c:540)
+==12380==    by 0x4008D1: main (lab_a.c:66)
+==12380==  Block was alloc'd at
+==12380==    at 0x4C29E63: malloc (vg_replace_malloc.c:309)
+==12380==    by 0x40069C: main (lab_a.c:37)
+==12380== 
+==12380== Invalid read of size 1
+==12380==    at 0x4C31BB6: __GI_mempcpy (vg_replace_strmem.c:1538)
+==12380==    by 0x4EB1964: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4E84022: vfprintf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4E8A498: printf (in /usr/lib64/libc-2.17.so)
+==12380==    by 0x4008E6: main (lab_a.c:68)
+==12380==  Address 0x5205046 is 6 bytes inside a block of size 44 free'd
+==12380==    at 0x4C2AF5D: free (vg_replace_malloc.c:540)
+==12380==    by 0x4008D1: main (lab_a.c:66)
+==12380==  Block was alloc'd at
+==12380==    at 0x4C29E63: malloc (vg_replace_malloc.c:309)
+==12380==    by 0x40069C: main (lab_a.c:37)
+==12380== 
+Program 0x40068d
+Static data 0x7fffffef
+Ram data 0x7fffffe9
+Heap data 0x5205040
+Stack data 0x7fffffec
+Passing the 2X function a 2, I got 4
+Passing the 3X function a 2, I got 6
+Heap data values before free: 1 Stack
+Heap data values before free: 2 Pointer
+Heap data values after free: 2 Pointer
+==12380== 
+==12380== HEAP SUMMARY:
+==12380==     in use at exit: 0 bytes in 0 blocks
+==12380==   total heap usage: 1 allocs, 1 frees, 44 bytes allocated
+==12380== 
+==12380== All heap blocks were freed -- no leaks are possible
+==12380== 
+==12380== For counts of detected and suppressed errors, rerun with: -v
+==12380== ERROR SUMMARY: 16 errors from 4 contexts (suppressed: 0 from 0)
+
+LAB_B.C OUTPUT
+
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+
+LAB_B.C VALGRIND OUTPUT
+
+==12637== Memcheck, a memory error detector
+==12637== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12637== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==12637== Command: ./lab_b
+==12637== 
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+Print poly by reference:  0  2  4  6  8 10 12 14 16 18 
+Print poly by value:  0  2  4  6  8 10 12 14 16 18 
+==12637== 
+==12637== HEAP SUMMARY:
+==12637==     in use at exit: 0 bytes in 0 blocks
+==12637==   total heap usage: 5 allocs, 5 frees, 272 bytes allocated
+==12637== 
+==12637== All heap blocks were freed -- no leaks are possible
+==12637== 
+==12637== For counts of detected and suppressed errors, rerun with: -v
+==12637== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+LAB_C.C OUTPUT
+
+Printing 1 node linked list
+node 1 contains the string 'one'
+Printing 2 node linked list
+node 1 contains the string 'one'
+node 2 contains the string 'two'
+
+LAB_C.C VALGRIND OUTPUT
+
+==12779== Memcheck, a memory error detector
+==12779== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==12779== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==12779== Command: ./lab_c
+==12779== 
+Printing 1 node linked list
+node 1 contains the string 'one'
+Printing 2 node linked list
+node 1 contains the string 'one'
+node 2 contains the string 'two'
+==12779== 
+==12779== HEAP SUMMARY:
+==12779==     in use at exit: 0 bytes in 0 blocks
+==12779==   total heap usage: 3 allocs, 3 frees, 128 bytes allocated
+==12779== 
+==12779== All heap blocks were freed -- no leaks are possible
+==12779== 
+==12779== For counts of detected and suppressed errors, rerun with: -v
+==12779== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
